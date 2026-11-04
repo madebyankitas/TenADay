@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TenADay</title>
+<style>
+:root{--bg:#f2f4fb;--card:#fff;--ink:#141a33;--mut:#626b8a;--line:#e1e5f1;--acc:#ff6a13;--ok:#12a150;--bad:#e5484d;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1226;--card:#161d38;--ink:#eef1fb;--mut:#9aa5c8;--line:#27315a;--acc:#ff8a3d;--ok:#3ddc84;--bad:#ff7b80;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+body::before{content:"";position:fixed;inset:0 0 auto;height:220px;z-index:-1;background:repeating-linear-gradient(90deg,transparent 0 59px,var(--line) 59px 60px);opacity:.55;-webkit-mask:linear-gradient(#000,transparent);mask:linear-gradient(#000,transparent)}
+main{max-width:660px;margin:0 auto;padding:20px 16px 56px}
+h1{font-size:34px;font-weight:900;letter-spacing:-1.2px;margin:0;line-height:1.1}h1 b{color:var(--acc)}
+h2{font-size:17px;margin:22px 0 10px}
+.sub{color:var(--mut);margin:4px 0}
+.hero{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ic{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:inherit;font-size:18px;cursor:pointer}
+.ic:hover{border-color:var(--acc)}
+.panel{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:16px}
+.ring{--p:0;width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--acc) calc(var(--p)*1%),var(--line) 0);position:relative;flex:none;text-align:center}
+.ring::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--card)}
+.ring>*{position:relative;z-index:1;grid-area:1/1}
+.ring b{font-size:20px;margin-top:-8px}.ring span{font-size:11px;color:var(--mut);margin-top:26px}
+.kpis{display:flex;gap:10px;flex:1}.kpis div{flex:1;background:var(--bg);border-radius:12px;padding:10px}
+.kpis b{display:block;font-size:22px;font-variant-numeric:tabular-nums}.kpis span{font-size:13px;color:var(--mut)}
+.lvl{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);margin-top:12px}
+.xp{flex:1;height:8px;background:var(--line);border-radius:6px;overflow:hidden}.xp i{display:block;height:100%;background:var(--acc);border-radius:6px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:380px){.tiles{grid-template-columns:1fr}}
+.tile{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:14px;color:inherit;font:inherit;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 10px 24px color-mix(in srgb,var(--c) 28%,transparent)}
+.tile:active{transform:scale(.97)}
+.tile em{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;font-style:normal;font-size:24px;background:color-mix(in srgb,var(--c) 16%,transparent);margin-bottom:8px}
+.tile b{display:block;font-size:17px}.tile small{display:block;color:var(--mut);font-size:12.5px;min-height:36px}
+.tag{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;background:color-mix(in srgb,var(--c) 16%,transparent)}
+.tag.dn{background:var(--ok);color:#fff}
+.hist{list-style:none;margin:0;padding:0}.hist li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.hist li span:first-child{flex:1}.hist li span:nth-child(2){color:var(--mut)}
+.top{display:flex;align-items:center;gap:12px}
+.dots{flex:1;display:flex;gap:4px}.dots i{flex:1;height:8px;border-radius:5px;background:var(--line);transition:background .3s}
+.dots i.cur{background:var(--acc)}.dots i.ok{background:var(--ok)}.dots i.bad{background:var(--bad)}
+.combo{min-width:52px;text-align:right;font-weight:800;color:var(--acc)}
+.timer{display:flex;align-items:center;gap:14px;margin:14px 0 4px}
+.timer svg{width:76px;height:76px;flex:none}.timer circle{fill:none;stroke-width:7}
+.tr{stroke:var(--line)}.tf{stroke:var(--c);stroke-linecap:round;stroke-dasharray:213.6;transform:rotate(-90deg);transform-origin:40px 40px;transition:stroke-dashoffset .12s linear}
+.timer b{font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--c);display:block;line-height:1}
+.timer span{color:var(--mut);font-size:13px}.timer .pt{margin-left:auto;text-align:right}
+.card{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:16px;padding:18px;margin-top:10px;animation:in .3s ease both}
+.q{font-size:19px;font-weight:600;margin:0 0 14px;white-space:pre-line}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;margin:8px 0;padding:12px;border-radius:12px;border:2px solid var(--line);background:transparent;color:inherit;font:inherit;cursor:pointer;transition:transform .12s,border-color .12s}
+.opt:hover:not(:disabled){border-color:var(--c);transform:translateX(4px)}
+.opt kbd{flex:none;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:var(--bg);font:700 13px system-ui;color:var(--mut)}
+.opt:disabled{cursor:default}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,transparent)}.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 16%,transparent)}
+.opt:disabled:not(.ok):not(.bad){opacity:.5}
+.btn{background:var(--acc);color:#1b1206;border:0;border-radius:12px;padding:12px 22px;font:inherit;font-weight:800;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}.btn.ghost{background:transparent;color:inherit;border:2px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+textarea{width:100%;min-height:130px;padding:12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:inherit;font:inherit}
+.fb{display:flex;gap:14px;align-items:flex-start;margin-top:14px;padding:14px;border-radius:14px;background:var(--card);border:2px solid var(--line);animation:in .25s ease both}
+.fb.ok{border-color:var(--ok)}.fb.bad{border-color:var(--bad)}
+.fb p{margin:6px 0 0}.pts{font-size:30px;font-weight:900;color:var(--acc);animation:pop .4s ease both}
+.end{text-align:center;padding-top:24px}.stars{font-size:38px;letter-spacing:6px}
+.big{font-size:72px;font-weight:900;color:var(--acc);line-height:1.1;font-variant-numeric:tabular-nums}
+.end .row{justify-content:center}
+.cf{position:fixed;width:9px;height:9px;border-radius:2px;pointer-events:none;z-index:9;background:hsl(var(--h) 90% 55%);animation:cf .9s ease-out forwards}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.shake{animation:shake .35s}
+@keyframes in{from{opacity:0;transform:translateY(12px)}}
+@keyframes pop{from{transform:scale(.4)}60%{transform:scale(1.25)}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes cf{40%{transform:translate(var(--x),var(--y))}to{transform:translate(var(--x),calc(var(--y) + 170px)) rotate(500deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const $=s=>document.querySelector(s),app=$("#app"),BRAND="Ten<b>ADay</b>";
+const store={get(){try{return JSON.parse(localStorage.getItem("examsprint-nl"))||{h:[]}}catch(e){return{h:[]}}},set(v){try{localStorage.setItem("examsprint-nl",JSON.stringify(v))}catch(e){}}};
+const COL={pm:"#3b6cff",lezen:"#16a34a",luisteren:"#8b5cf6",knm:"#f97316",schrijven:"#e8478b",spreken:"#0ea5a4",review:"#e5484d"};
+const ICO={pm:"📋",lezen:"📖",luisteren:"🎧",knm:"🏛️",schrijven:"✍️",spreken:"🎤",review:"🔁"};
+const MAXQ=10,RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let BANK={},S=null,tm=null,AC=null;
+
+/* ---------- helpers ---------- */
+const today=()=>new Date().toISOString().slice(0,10);
+function rng(str){let h=1779033703;for(const c of str)h=Math.imul(h^c.charCodeAt(0),3432918353),h=h<<13|h>>>19;return()=>{h=Math.imul(h^h>>>16,2246822507);h=Math.imul(h^h>>>13,3266489909);return((h^=h>>>16)>>>0)/4294967296}}
+function pick(m){const r=rng(today()+m),a=BANK[m].items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,MAXQ)}
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function streak(h){const d0=new Set(h.map(x=>x.d));let n=0,d=new Date();if(!d0.has(d.toISOString().slice(0,10)))d.setDate(d.getDate()-1);while(d0.has(d.toISOString().slice(0,10))){n++;d.setDate(d.getDate()-1)}return n}
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="nl-NL";u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+const bonus=(s,l)=>Math.round(50*Math.max(0,1-s/l));
+const all=()=>Object.values(BANK).flatMap(b=>b.items),nm=m=>m==="review"?"Review mistakes":BANK[m].n;
+const sec=()=>(Date.now()-S.t0)/1000,stopT=()=>clearInterval(tm);
+function track(it,ok){const st=store.get(),w=new Set(st.w||[]);ok?w.delete(it.id):w.add(it.id);st.w=[...w];store.set(st)}
+function beep(f,d=.12,t="sine"){if(store.get().snd===0)return;try{AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;g.gain.value=.08;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.stop(AC.currentTime+d)}catch(e){}}
+const good=()=>{beep(660);setTimeout(()=>beep(880),90)},bad=()=>beep(180,.25,"sawtooth");
+function pop(el,n=14){if(RM||!el)return;const r=el.getBoundingClientRect();for(let i=0;i<n;i++){const s=document.createElement("i");s.className="cf";s.style.cssText=`left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;--x:${(Math.random()-.5)*280}px;--y:${-60-Math.random()*150}px;--h:${Math.random()*360}`;document.body.appendChild(s);setTimeout(()=>s.remove(),900)}}
+
+/* ---------- home ---------- */
+function home(){
+  stopT();S=null;const st=store.get(),t=today(),miss=all().filter(i=>(st.w||[]).includes(i.id)),total=st.h.reduce((a,x)=>a+x.p,0);
+  const lv=Math.floor(total/1000)+1,sets=st.h.filter(x=>x.d===t).length,goal=2,done=m=>st.h.some(x=>x.d===t&&x.m===m);
+  const tile=(k,n,d,tag,dn)=>`<button class="tile" style="--c:${COL[k]}" data-m="${k}"><em>${ICO[k]}</em><b>${n}</b><small>${d}</small><span class="tag${dn?" dn":""}">${tag}</span></button>`;
+  app.innerHTML=`<header class="hero"><div><h1>${BRAND}</h1><p class="sub">10 questions a day. One step closer to success.</p></div><button class="ic" id="snd" aria-label="Toggle sound">${st.snd===0?"🔇":"🔊"}</button></header>
+  <section class="panel"><div class="ring" style="--p:${Math.min(1,sets/goal)*100}"><b>${sets}/${goal}</b><span>sets today</span></div><div class="kpis"><div><b>🔥 ${streak(st.h)}</b><span>day streak</span></div><div><b>⭐ ${total}</b><span>points</span></div></div></section>
+  <div class="lvl"><span>Level ${lv}</span><div class="xp"><i style="width:${total%1000/10}%"></i></div><span>${1000-total%1000} to level ${lv+1}</span></div>
+  <h2>Choose today’s track</h2><div class="tiles">${miss.length?tile("review","Review mistakes","Retry what you missed",`${Math.min(miss.length,MAXQ)} of ${miss.length}`):""}${Object.entries(BANK).map(([k,m])=>tile(k,m.n,m.d,done(k)?"✓ Done today":pick(k).length+" questions",done(k))).join("")}</div>
+  ${st.h.length?`<h2>Recent sets</h2><ul class="hist">${st.h.slice(-5).reverse().map(x=>`<li><span>${ICO[x.m]||""} ${nm(x.m)}</span><span>${x.d.slice(5)}</span><b>${x.p}</b></li>`).join("")}</ul>`:""}`;
+  app.querySelectorAll(".tile").forEach(b=>b.onclick=()=>start(b.dataset.m));
+  $("#snd").onclick=()=>{const s=store.get();s.snd=s.snd===0?1:0;store.set(s);home()};
+}
+function start(m){const w=store.get().w||[];S={m,items:m==="review"?all().filter(i=>w.includes(i.id)).slice(0,MAXQ):pick(m),i:0,p:0,c:0,res:[],combo:0,on:true};show()}
+
+/* ---------- quiz ---------- */
+function show(){
+  stopT();const it=S.items[S.i],c=COL[it.m];S.lim=BANK[it.m].lim;S.t0=Date.now();S.locked=false;
+  const dots=S.items.map((_,k)=>`<i class="${k<S.i?(S.res[k]?"ok":"bad"):k===S.i?"cur":""}"></i>`).join("");
+  let body="";
+  if(it.t==="w")body=`<p class="q">${esc(it.q)}</p><textarea id="tx" placeholder="Schrijf hier…" aria-label="Your answer"></textarea><div class="row"><button class="btn" id="go">Check answer</button></div>`;
+  else if(it.t==="s")body=`<p class="q">${esc(it.q)}</p><p class="sub">Hint: ${esc(it.h)}</p><div class="row"><button class="btn ghost" id="pl">🔊 Hear the prompt</button></div><p>Say your answer out loud, then rate yourself honestly:</p><div class="row"><button class="btn" data-r="100">Goed</button><button class="btn ghost" data-r="60">Redelijk</button><button class="btn ghost" data-r="20">Nog oefenen</button></div>`;
+  else body=`${it.s?'<div class="row" style="margin:0 0 12px"><button class="btn ghost" id="pl">▶ Play audio</button></div>':""}<p class="q">${esc(it.q)}</p>${it.o.map((o,j)=>`<button class="opt" data-j="${j}"><kbd>${j+1}</kbd>${esc(o)}</button>`).join("")}`;
+  app.innerHTML=`<div class="top"><button class="ic" id="qt" aria-label="Quit set">✕</button><div class="dots">${dots}</div><span class="combo" id="cb">${S.combo>1?"🔥 x"+S.combo:""}</span></div>
+  <div class="timer" style="--c:${c}"><svg viewBox="0 0 80 80" aria-hidden="true"><circle class="tr" cx="40" cy="40" r="34"/><circle class="tf" id="tf" cx="40" cy="40" r="34"/></svg><div><b id="bn">+50</b><span>speed bonus left</span></div><div class="pt"><b style="color:var(--ink)">${S.p}</b><span>${ICO[it.m]} ${S.i+1}/${S.items.length}</span></div></div>
+  <div class="card" id="cd" style="--c:${c}">${body}</div><div id="out" style="--c:${c}"></div>`;
+  const pl=$("#pl");if(pl){pl.onclick=()=>speak(it.s||it.q);if(it.s)speak(it.s)}
+  tm=setInterval(()=>{const s=sec();$("#tf").style.strokeDashoffset=213.6*Math.min(1,s/S.lim);$("#bn").textContent="+"+bonus(s,S.lim)},120);
+  $("#qt").onclick=()=>{if(confirm("Quit this set? Progress in it will be lost."))home()};
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answerMCQ(+b.dataset.j));
+  app.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>finishItem(+b.dataset.r,"Self-rated. Record yourself once and compare with the hint."));
+  const go=$("#go");if(go)go.onclick=checkWriting;
+}
+function answerMCQ(j){
+  if(S.locked)return;const it=S.items[S.i],ok=j===it.a;track(it,ok);
+  document.querySelectorAll(".opt").forEach((b,k)=>{b.disabled=true;if(k===it.a)b.classList.add("ok");else if(k===j)b.classList.add("bad")});
+  finishItem(ok?100:0,(ok?"Correct. ":"Not quite. ")+it.e);
+}
+function checkWriting(){
+  const it=S.items[S.i],tx=$("#tx").value.trim(),w=tx?tx.split(/\s+/).length:0,low=tx.toLowerCase(),hits=it.k.filter(k=>low.includes(k));
+  const base=Math.round(100*(.5*Math.min(1,w/it.min)+.5*hits.length/it.k.length));$("#tx").disabled=true;
+  finishItem(base,`${w}/${it.min} words. Key words: ${it.k.map(k=>hits.includes(k)?"✓ "+k:"✗ "+k).join(", ")}. Check spelling and grammar yourself.`);
+}
+function finishItem(base,msg){
+  if(S.locked)return;S.locked=true;stopT();
+  const g=base>=60,b=base>0?bonus(sec(),S.lim):0;S.combo=g?S.combo+1:0;
+  const cb=g?Math.min(S.combo-1,5)*5:0,pts=Math.round(base+b+cb);S.p+=pts;if(g)S.c++;S.res[S.i]=g;
+  app.querySelectorAll("[data-r],#go").forEach(x=>x.disabled=true);
+  const last=S.i===S.items.length-1,card=$("#cd");
+  if(g){good();pop(card)}else{bad();if(!RM)card.classList.add("shake")}
+  $("#cb").textContent=S.combo>1?"🔥 x"+S.combo:"";
+  $("#out").innerHTML=`<div class="fb ${g?"ok":"bad"}"><div class="pts">+${pts}</div><div><b>${g?["Nice!","Spot on!","Sharp!"][S.i%3]:"Keep going"}</b><br><small>${Math.round(base)} accuracy + ${b} speed${cb?` + ${cb} combo`:""} · ${sec().toFixed(1)}s</small><p>${esc(msg)}</p></div></div><div class="row"><button class="btn" id="nx">${last?"See results":"Next question"}</button></div>`;
+  $("#nx").onclick=()=>last?end():(S.i++,show());$("#nx").focus();
+}
+document.addEventListener("keydown",e=>{
+  if(!S||!S.on||S.locked||document.activeElement.tagName==="TEXTAREA")return;
+  const b=/^[1-4]$/.test(e.key)&&document.querySelector(`.opt[data-j="${e.key-1}"]`);if(b)b.click();
+});
+
+/* ---------- results ---------- */
+function end(){
+  stopT();const st=store.get(),n=S.items.length;st.h.push({d:today(),m:S.m,p:S.p,c:S.c,n});st.h=st.h.slice(-200);store.set(st);S.on=false;
+  const pct=S.c/n,stars=pct>=.8?3:pct>=.5?2:1,missN=(st.w||[]).length,P=S.p,mode=S.m;
+  app.innerHTML=`<div class="end"><div class="stars">${"⭐".repeat(stars)}${"☆".repeat(3-stars)}</div><h1>${["Good start. Keep drilling.","Solid work!","Top score!"][stars-1]}</h1><p class="sub">${nm(mode)}</p><div class="big" id="sc">0</div><p>points · ${S.c}/${n} correct · max ${n*150}</p><p>🔥 ${streak(st.h)}-day streak</p><div class="row"><button class="btn" id="hm">Back to tracks</button>${missN&&mode!=="review"?`<button class="btn ghost" id="rv">Review mistakes (${missN})</button>`:""}</div></div>`;
+  const el=$("#sc"),T=RM?0:1000,t0=Date.now();(function f(){const k=T?Math.min(1,(Date.now()-t0)/T):1;el.textContent=Math.round(P*k);if(k<1)requestAnimationFrame(f)})();
+  if(stars===3){pop(el,30);setTimeout(()=>pop(el,30),350)}else if(stars===2)pop(el,14);
+  $("#hm").onclick=home;const rv=$("#rv");if(rv)rv.onclick=()=>start("review");
+}
+
+/* ---------- boot ---------- */
+fetch("questions.json").then(r=>r.json()).then(d=>{BANK=d;for(const m in BANK)BANK[m].items.forEach(i=>i.m=m);home()}).catch(()=>{app.innerHTML=`<h1>${BRAND}</h1><p class="sub">Could not load questions.json. Open the app through GitHub Pages or a local server (for example: python3 -m http.server), not by double-clicking the file.</p>`});
+</script>
+</body>
+</html>

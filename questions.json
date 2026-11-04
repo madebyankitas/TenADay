@@ -1,0 +1,60 @@
+{
+ "pm":{"n":"Project Management","d":"PMP-style · 45 s per question","lim":45,"items":[
+  {"q":"Which document formally authorizes a project and gives the project manager authority?","o":["Project charter","Scope statement","WBS","Risk register"],"a":0,"e":"The project charter is issued by the sponsor and authorizes the project.","id":"pm1"},
+  {"q":"The critical path is…","o":["The shortest path through the network","The longest path, which sets the minimum project duration","The path with the most resources","The path with the highest risk"],"a":1,"e":"It is the longest path; any delay on it delays the project.","id":"pm2"},
+  {"q":"A stakeholder has high power and low interest. Which strategy fits?","o":["Manage closely","Keep satisfied","Keep informed","Monitor"],"a":1,"e":"Power/interest grid: high power, low interest means keep satisfied.","id":"pm3"},
+  {"q":"CPI = 0.8. What does this mean?","o":["Under budget","Over budget","Ahead of schedule","Behind schedule"],"a":1,"e":"CPI = EV/AC. Below 1 means you get 0.80 of value for every 1.00 spent.","id":"pm4"},
+  {"q":"SPI = 0.9. What does this mean?","o":["Behind schedule","Ahead of schedule","Over budget","On budget"],"a":0,"e":"SPI = EV/PV. Below 1 means behind schedule.","id":"pm5"},
+  {"q":"Buying insurance against a risk is which response?","o":["Avoid","Mitigate","Transfer","Accept"],"a":2,"e":"Transfer shifts the impact to a third party.","id":"pm6"},
+  {"q":"Team members disagree openly about approach. Which Tuckman stage is this?","o":["Forming","Storming","Norming","Performing"],"a":1,"e":"Conflict over approach is typical of storming.","id":"pm7"},
+  {"q":"Who owns and orders the product backlog in Scrum?","o":["Scrum Master","Product Owner","Developers","Sponsor"],"a":1,"e":"The Product Owner is accountable for the backlog.","id":"pm8"},
+  {"q":"A task has zero total float. It is…","o":["Optional","On the critical path","Finished","Low risk"],"a":1,"e":"Zero float means any delay moves the end date.","id":"pm9"},
+  {"q":"What does the WBS do?","o":["Lists risks","Decomposes scope into deliverables","Assigns costs only","Shows the schedule"],"a":1,"e":"The Work Breakdown Structure decomposes total scope.","id":"pm10"},
+  {"q":"Uncontrolled additions to scope without change control are called…","o":["Gold plating only","Scope creep","Crashing","Fast tracking"],"a":1,"e":"Scope creep bypasses integrated change control.","id":"pm11"},
+  {"q":"Which technique adds resources to shorten the schedule at extra cost?","o":["Fast tracking","Crashing","Leveling","Smoothing"],"a":1,"e":"Crashing trades cost for time; fast tracking overlaps tasks.","id":"pm12"},
+  {"q":"The purpose of a sprint retrospective is to…","o":["Demo to the customer","Plan the next sprint scope","Improve how the team works","Update the roadmap"],"a":2,"e":"The team inspects its process and agrees improvements.","id":"pm13"},
+  {"q":"Which is part of the triple constraint?","o":["Scope, time, cost","Risk, quality, people","Scope, risk, people","Time, quality, vendors"],"a":0,"e":"Classic triple constraint: scope, time, cost (quality sits in the middle).","id":"pm14"}
+ ]},
+ "lezen":{"n":"Lezen","d":"Reading · 40 s per text","lim":40,"items":[
+  {"q":"Zwembad De Dolfijn\nOpen: za 9.00–17.00 uur. Zondag gesloten.","o":["Je kunt zondag zwemmen","Je kunt zaterdag zwemmen","Het zwembad is altijd open","Het zwembad sluit om 9.00 uur"],"a":1,"e":"Alleen op zaterdag is het open.","id":"lezen1"},
+  {"q":"Beste mevrouw Jansen,\nUw afspraak bij de huisarts is verplaatst naar donderdag 14.30 uur.","o":["De afspraak is op dinsdag","De afspraak is later op donderdag","De afspraak is afgezegd","De afspraak is om 13.30 uur"],"a":1,"e":"Verplaatst naar donderdag 14.30 uur.","id":"lezen2"},
+  {"q":"Let op! Lijn 5 rijdt deze week niet. Neem bus 12.","o":["Lijn 5 rijdt vaker","Neem bus 12 in plaats van lijn 5","Er rijdt geen bus","Bus 12 is stuk"],"a":1,"e":"Bus 12 is het alternatief.","id":"lezen3"},
+  {"q":"Te huur: kamer in Utrecht, €450 per maand, inclusief water en internet.","o":["Water kost extra","Internet is inbegrepen","De kamer is in Rotterdam","De huur is €540"],"a":1,"e":"Inclusief water en internet.","id":"lezen4"},
+  {"q":"Supermarkt Vers: kassa 3 is alleen voor mensen met maximaal vijf producten.","o":["Kassa 3 is voor grote boodschappen","Kassa 3 is voor weinig producten","Kassa 3 is gesloten","Kassa 3 is voor kinderen"],"a":1,"e":"Maximaal vijf producten.","id":"lezen5"},
+  {"q":"Bibliotheek: boeken moet je na drie weken terugbrengen. Te laat? Dan betaal je €0,25 per dag.","o":["Je mag boeken drie weken houden","Je betaalt altijd €0,25","Boeken zijn gratis te houden","Je mag niet lenen"],"a":0,"e":"Drie weken uitleentermijn.","id":"lezen6"},
+  {"q":"Hoi Sara, ik kom morgen later. De trein is vertraagd. Ik ben er om 10.15 uur. Groeten, Tim","o":["Tim komt eerder","Tim is om 10.15 uur er","Tim komt niet","Sara komt later"],"a":1,"e":"Tim is er om 10.15 uur.","id":"lezen7"},
+  {"q":"Gemeente Delft: een paspoort aanvragen kan alleen met afspraak.","o":["Je kunt zonder afspraak komen","Je moet eerst een afspraak maken","Paspoorten zijn gratis","De gemeente is dicht"],"a":1,"e":"Alleen met afspraak.","id":"lezen8"}
+ ]},
+ "luisteren":{"n":"Luisteren","d":"Listening · 40 s, audio plays in your browser","lim":40,"items":[
+  {"s":"De trein naar Utrecht vertrekt om half drie van spoor vier.","q":"Hoe laat vertrekt de trein?","o":["14.30","15.30","14.00","13.30"],"a":0,"e":"Half drie = 14.30.","id":"luisteren1"},
+  {"s":"Ik heb morgen een afspraak bij de tandarts. Daarom werk ik tot twaalf uur.","q":"Waarom werkt de man tot twaalf uur?","o":["Hij is ziek","Hij gaat naar de tandarts","Hij gaat op vakantie","Hij heeft vrij"],"a":1,"e":"Hij heeft een tandartsafspraak.","id":"luisteren2"},
+  {"s":"Het wordt vandaag zonnig, maar morgen regent het de hele dag.","q":"Wanneer regent het?","o":["Vandaag","Morgen","Overmorgen","Nooit"],"a":1,"e":"Morgen regent het.","id":"luisteren3"},
+  {"s":"Mag ik een kopje koffie en een stuk appeltaart? Dat is samen zes euro vijftig.","q":"Wat kost het samen?","o":["€5,60","€6,50","€7,50","€6,15"],"a":1,"e":"Zes euro vijftig = €6,50.","id":"luisteren4"},
+  {"s":"De les begint volgend week maandag niet om negen uur, maar om tien uur.","q":"Hoe laat begint de les?","o":["9.00","10.00","11.00","8.00"],"a":1,"e":"Om tien uur.","id":"luisteren5"},
+  {"s":"Wij wonen in een klein huis in Rotterdam. We hebben twee kinderen en een hond.","q":"Wat hebben ze?","o":["Eén kind","Twee kinderen en een hond","Twee honden","Geen kinderen"],"a":1,"e":"Twee kinderen en een hond.","id":"luisteren6"},
+  {"s":"Bel de huisarts als u koorts hebt. Het nummer is nul tien, vijf vijf vijf, één twee drie vier.","q":"Wanneer moet u bellen?","o":["Bij koorts","Bij zonnig weer","Na het eten","Nooit"],"a":0,"e":"Bij koorts.","id":"luisteren7"},
+  {"s":"Pardon, waar is het station? Ga rechtdoor en neem de tweede straat links.","q":"Welke straat neem je?","o":["Eerste rechts","Tweede links","Tweede rechts","Derde links"],"a":1,"e":"Tweede straat links.","id":"luisteren8"}
+ ]},
+ "knm":{"n":"KNM","d":"Kennis van de Nederlandse Maatschappij · 30 s","lim":30,"items":[
+  {"q":"Welk nummer bel je bij nood (brand, ongeluk)?","o":["112","0900-8844","14020","911"],"a":0,"e":"112 is het alarmnummer.","id":"knm1"},
+  {"q":"Waar zit de regering van Nederland?","o":["Amsterdam","Den Haag","Utrecht","Rotterdam"],"a":1,"e":"Regering en parlement zitten in Den Haag; Amsterdam is de hoofdstad.","id":"knm2"},
+  {"q":"Vanaf welke leeftijd mag je stemmen bij landelijke verkiezingen?","o":["16","18","21","25"],"a":1,"e":"Vanaf 18 jaar.","id":"knm3"},
+  {"q":"Wat doe je als je ziek bent?","o":["Direct naar het ziekenhuis","Eerst bellen met de huisarts","Naar de apotheek zonder bellen","Naar de gemeente"],"a":1,"e":"De huisarts is het eerste aanspreekpunt.","id":"knm4"},
+  {"q":"Wat is Koningsdag?","o":["27 april","5 mei","31 december","1 januari"],"a":0,"e":"Koningsdag is op 27 april.","id":"knm5"},
+  {"q":"Wat is Bevrijdingsdag?","o":["5 mei","4 mei","27 april","6 december"],"a":0,"e":"5 mei viert de bevrijding; 4 mei is Dodenherdenking.","id":"knm6"},
+  {"q":"Wat staat in artikel 1 van de Grondwet?","o":["Gelijke gevallen worden gelijk behandeld; discriminatie is verboden","Iedereen moet werken","Iedereen betaalt belasting","Je mag niet staken"],"a":0,"e":"Gelijke behandeling en verbod op discriminatie.","id":"knm7"},
+  {"q":"Hoe lang moeten kinderen naar school (leerplicht)?","o":["Tot 12 jaar","Tot 16 jaar (daarna tot startkwalificatie of 18)","Tot 21 jaar","Niet verplicht"],"a":1,"e":"Leerplicht vanaf 5 jaar; kwalificatieplicht tot 18.","id":"knm8"},
+  {"q":"Waarvoor gebruik je DigiD?","o":["Inloggen bij overheid en zorg","Betalen in de winkel","Treinkaartjes","Een rijbewijs"],"a":0,"e":"DigiD is je digitale identiteit voor de overheid.","id":"knm9"},
+  {"q":"Wat is het BSN?","o":["Je burgerservicenummer","Een bankpas","Een rijbewijs","Een postcode"],"a":0,"e":"Het BSN is je persoonlijk nummer bij de overheid.","id":"knm10"}
+ ]},
+ "schrijven":{"n":"Schrijven","d":"Writing · 4 min per task","lim":240,"items":[
+  {"t":"w","q":"Je bent ziek. Schrijf een korte e-mail aan je baas. Zeg dat je ziek bent, wanneer je terugkomt en bedank hem.","min":25,"k":["ziek","terug","bedankt","groet"],"id":"schrijven1"},
+  {"t":"w","q":"Schrijf een kaart aan een vriend. Vertel waar je woont, wat je doet in het weekend en nodig hem uit.","min":30,"k":["woon","weekend","kom","groet"],"id":"schrijven2"},
+  {"t":"w","q":"Je wilt een afspraak bij de huisarts verzetten. Schrijf een bericht met de reden en een nieuwe dag.","min":25,"k":["afspraak","graag","dag","dank"],"id":"schrijven3"}
+ ]},
+ "spreken":{"n":"Spreken","d":"Speaking · 60 s, say it aloud, then self-rate","lim":60,"items":[
+  {"t":"s","q":"Stel jezelf voor: naam, waar je woont, wat je werk is.","h":"Ik heet… Ik woon in… Ik werk als…","id":"spreken1"},
+  {"t":"s","q":"Wat doe je op een gewone dag? Vertel van ochtend tot avond.","h":"’s Ochtends sta ik op… Daarna… ’s Avonds…","id":"spreken2"},
+  {"t":"s","q":"Je bent in een winkel en zoekt een jas. Vraag om hulp en vraag naar de prijs.","h":"Pardon, ik zoek… Wat kost…? Mag ik passen?","id":"spreken3"}
+ ]}
+}
